@@ -1,103 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kimoi Kemboi — algebraic geometry, derived categories, and geometric invariant theory.">
+  <meta name="theme-color" content="#31566a">
+  <title>Kimoi Kemboi</title>
+  <style>
+    :root {
+      --background: #fbfcfa;
+      --surface: #ffffff;
+      --text: #263439;
+      --muted: #607073;
+      --navy: #31566a;
+      --teal: #28736d;
+      --deep-teal: #1d5956;
+      --sage: #85a89a;
+      --soft: #eff6f3;
+      --border: #dce6e1;
+    }
 
-<!DOCTYPE html>
-<html><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>Kimoi Kemboi</title>
-
-</head><body> 
-
-<table border = "0" style = "width:100%" > <tbody><tr><td width="200"><img src="Kemboi_head_Shot.jpg" height="300">
-</td><td>
-
-<h1>Kimoi Kemboi</h1> <br>
-<b>E-mail</b>: firstname at princeton dot edu <br>
-<b>Office</b>: Fine Hall 1107 <br><br><br>
-
-
-</td>
-<td><img src="falls.jpg" height="300" align="right"></td> 
-</tr></tbody></table>
-
-<hr>
-
-I am an Instructor in Mathematics at Princeton University. In Spring 2024, I was a postdoc fellow at MSRI, and in Fall 2023, I was a member at the IAS. Before that, I was a graduate student at Cornell University, advised by <a href="https://danielhl.github.io"> Daniel Halpern-Leistner</a>. 
-
-<br><br>
-
-My research is in algebraic geometry. I am interested in derived categories, geometric invariant theory, noncommutative geometry, and moduli theory. 
-
-
-<br><br>
-
-<hr>
-
-<h2>research</h2>
-
-<b> Papers: </b> <br><br>
-
-<li> <a href="https://arxiv.org/abs/2511.05381"> A looming of phantoms</a>, joint with D. Krashen, T. Liu, Y. Liu, E. Mackall, S. Makarova, A. Perry, A. Robotis, S. Vankatesh. <br> 
-
-We produce more examples of phantom categories on rational surfaces. </li>
-
-<br>
-
-<li> <a href="https://arxiv.org/abs/2506.20559">The Fano of lines, the Kuznetsov component, and a flop</a>, joint with Ed Segal. <br> 
-
-In this article, we prove Galkin's conjecture for cubic fourfolds. </li>
-	
-<br>
-
-<li> <a href="https://arxiv.org/abs/2405.01683">Non-existence of phantoms on some non-generic blowups of the projective plane</a>, joint with Lev Borisov, <i> Proc. Amer. Math. Soc.</i> <b>153</b> (2025) 963-968. <br>
-
-We show that phantoms do not appear in the derived category of the blowup of the projective plane at a finite number of points lying on a smooth cubic curve. We also posit a conjecture for an obstruction to the existence of phantoms on surfaces. </li>
-
-<br>
-
-<li> <a href="https://arxiv.org/abs/2202.12876">Full exceptional collections of vector bundles on rank-two linear GIT quotients</a>, joint with Daniel Halpern-Leistner, <i> Advances </i> (to appear).<br> 
-
- We produce a large class of linear GIT quotients by a reductive group of rank two that admit a “full strong exceptional collection” consisting of vector bundles using the methods of window categories. </li>
-
-<br><br>
-
-<hr>
-
-<h2> talk notes </h2>
-
-<li> Full exceptional collections and window categories<br>
-
-<ul>
-	<i> Workshop in Non-commutative algebraic geometry, </i> SLMath Spring 2024 (<a href = "https://player.vimeo.com/video/910966571" >Video</a>). <br>
-	<i> IAS postdoc short talk </i> (<a href = "https://www.youtube.com/watch?v=6Guw3_wr3zo" >Video</a>). <br>
-	<i> Fields Medal Symposium, </i> Fields Institute (<a href = "https://www.youtube.com/watch?v=O4HJkU-MgtI" >Video</a>). <br>
-	<i> Derived categories and moduli spaces FRG workshop, </i> Cornell University (<a href = "(FRG slides) Full exceptional collections on rank 2 Linear GIT quotients 2.pdf" >Notes</a>, <a href = "https://sites.google.com/view/derivedfrg/events/cornell-2022" >Video</a>). </li> 
-</ul>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      border-top: 4px solid var(--navy);
+    }
+    a { color: var(--deep-teal); text-decoration: none; text-underline-offset: 3px; }
+    a:hover { text-decoration: underline; }
+    a:focus-visible, summary:focus-visible, button:focus-visible {
+      outline: 2px solid var(--teal); outline-offset: 4px; border-radius: 2px;
+    }
+    .shell { width: min(100% - 64px, 940px); margin: 0 auto; }
+    nav {
+      display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 28px;
+      padding: 19px 0 23px; border-bottom: 1px solid var(--border); font-size: 14px;
+    }
+    nav a { color: var(--navy); }
+    nav a:hover { color: var(--deep-teal); }
 
 
-<li> Semi-orthogonal decompositions and geometry <br>
-     <ul>
-	 <i>  A general audience short talk illustrating the landscape of decompositions of derived categories, </i> SLMath Spring 2024 (<a href = "Kemboi_Sponsors_Day_Talk.pdf">Slides</a>). </li>
-	</ul>
+    .masthead {
+      display: grid; grid-template-columns: minmax(0,1fr) 226px;
+      grid-template-areas: "headline portrait" "intro portrait";
+      column-gap: 48px; row-gap: 4px; align-items: start; padding: 35px 0 16px;
+    }
+    .headline { grid-area: headline; align-self: end; }
+    .picture { margin: 0; overflow: hidden; background: #eaf1ee; color: #7c928b; }
+    .picture img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .portrait { grid-area: portrait; width: 226px; height: 286px; align-self: center; border-radius: 3px; }
+    .portrait img { object-position: 50% 22%; }
+    .picture .fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 12px; font-style: italic; text-align: center; padding: 16px; }
+    .picture.photo-unavailable .fallback { display: flex; }
+    .picture.photo-unavailable img { display: none; }
+    .waterfall { margin: 1px 0 21px; }
+    .waterfall img { width: 100%; height: 150px; display: block; object-fit: cover; object-position: center 49%; border-radius: 3px; }
+    .waterfall figcaption { margin-top: 5px; color: var(--muted); text-align: right; font-size: 11px; }
+    .waterfall .waterfall-fallback { display: none; height: 150px; align-items: center; justify-content: center; background: #eaf1ee; color: #708582; font-size: 13px; border-radius: 3px; }
+    .waterfall.photo-unavailable img { display: none; }
+    .waterfall.photo-unavailable .waterfall-fallback { display: flex; }
 
 
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 9px; color: var(--navy); font: normal 38px/1.18 Georgia, "Times New Roman", serif; letter-spacing: -.025em; }
+    .affiliation { font-size: 16px; margin-bottom: 17px; }
+    .contact { color: var(--muted); font-size: 14px; margin: 0; }
+    .contact span + span { margin-left: 18px; }
+    .masthead .intro { grid-area: intro; padding: 15px 0 0; max-width: 700px; font-size: 15px; }
+    .intro p { margin: 0 0 11px; }
+    .intro p:last-child { margin-bottom: 0; }
+
+    section { padding: 23px 0 17px; border-top: 1px solid var(--border); scroll-margin-top: 20px; }
+    .section-title { display: flex; align-items: center; gap: 14px; margin: 0 0 16px; }
+    .section-title h2 {
+      margin: 0; color: var(--navy);
+      font: normal 24px/1.3 Georgia, "Times New Roman", serif;
+    }
+    .section-title::before { content: ""; width: 4px; height: 20px; background: var(--sage); flex-shrink: 0; }
+    .section-heading-row { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+    .section-label { color: var(--muted); font-size: 14px; margin: 0 0 9px; }
+    .all-toggle {
+      appearance: none; border: none; padding: 2px 0; margin: 0;
+      background: transparent; color: var(--deep-teal); cursor: pointer;
+      font-family: inherit; font-size: 13px; font-weight: 600; line-height: 1.5;
+    }
+    .all-toggle:hover { text-decoration: underline; }
+
+    .paper { border-bottom: 1px solid var(--border); padding: 16px 0 17px; }
+    .paper:last-of-type { border-bottom: 0; }
+    .paper h3 { font-size: 17px; font-weight: 600; line-height: 1.45; margin-bottom: 4px; }
+    .paper h3 a { color: var(--navy); }
+    .paper h3 a:hover { color: var(--deep-teal); }
+    .paper .byline { color: #4f6266; font-size: 14px; line-height: 1.55; margin-bottom: 2px; }
+    .paper .journal { font-size: 14px; color: var(--muted); margin: 2px 0 5px; }
+    .paper .journal cite { font-style: italic; }
+    .paper-links { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-size: 13px; margin: 0 0 5px; }
+    .paper-links a { font-weight: 600; }
+
+    details.paper-details { margin: 0; }
+    details.paper-details > summary {
+      width: 27px; height: 26px; display: inline-flex; align-items: center; justify-content: center;
+      cursor: pointer; list-style: none; color: var(--deep-teal);
+      border-radius: 50%; border: 1px solid transparent;
+    }
+    details.paper-details > summary:hover { background: var(--soft); border-color: var(--border); }
+    details > summary::-webkit-details-marker { display: none; }
+    details > summary::marker { content: ""; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .chevron {
+      display: inline-block; flex: none; width: 9px; height: 9px; border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor; transform: rotate(-45deg); transition: transform .15s ease;
+    }
+    details[open] > summary .chevron { transform: rotate(45deg); }
+    details.paper-details > summary .chevron { margin-top: -2px; }
+
+    .description {
+      margin-top: 9px; padding: 10px 14px;
+      background: var(--soft); border-left: 3px solid var(--sage);
+      font-size: 14px; line-height: 1.6; color: #3d5454; max-width: 830px;
+    }
+    .description p { margin: 0; }
 
 
-<br><br>
+    .talk-entry { border-bottom: 1px solid var(--border); padding: 14px 0; }
+    .talk-entry:last-child { border-bottom: 0; }
+    .talk-entry > summary { display: flex; justify-content: space-between; align-items: center; gap: 20px; cursor: pointer; list-style: none; color: var(--navy); font-size: 16px; line-height: 1.5; font-weight: 600; }
+    .talk-entry > summary:hover { color: var(--deep-teal); }
+    .talk-entry > summary .chevron { margin-right: 9px; }
+    .talk-body { padding: 6px 24px 2px 0; }
+    .talk-body ul { margin: 3px 0 4px; padding-left: 20px; font-size: 14px; color: var(--muted); }
+    .talk-body li { margin: 0 0 7px; }
+    .teaching-current { font-size: 15px; margin: 1px 0 18px; }
+    .teaching-current strong { color: var(--navy); font-weight: 600; }
 
-<hr>
-
-<h2>notes</h2>
-
-<li> Category theory and Homological Algebra <a href="MATH6350_Homological_Algebra.pdf"> notes </a> <br> </li>
-
-<br><br>
-<hr>
-
-<h2> teaching </h2> 
-
-<li> Fall 2025: Math 202 Linear Algebra </li> 
+    .other-writing { margin-top: 18px; padding: 18px 0 1px; border-top: 1px solid var(--border); }
+    .course-notes { margin: 1px 0 10px 0; }
+    .subheading { color: var(--navy); font-size: 15px; font-weight: 600; margin: 0 0 5px; }
+    .other-writing p, .course-notes p { font-size: 14px; margin: 0 0 12px; line-height: 1.6; }
+    .other-writing cite { font-style: italic; }
+    .shell { padding-bottom: 45px; }
 
 
+    @media (max-width: 690px) {
+      .shell { width: min(100% - 36px, 940px); }
+      nav { justify-content: flex-start; gap: 18px; padding: 16px 0; }
+      .masthead {
+        grid-template-columns: minmax(0,1fr) 125px; grid-template-areas: "headline portrait" "intro intro";
+        column-gap: 18px; row-gap: 17px; padding: 22px 0 14px;
+      }
+      .portrait { width: 125px; height: 168px; align-self: start; }
+      h1 { font-size: 30px; }
+      .affiliation { font-size: 14px; margin-bottom: 10px; }
+      .contact { font-size: 12.5px; }
+      .contact span { display: block; }
+      .contact span + span { margin-left: 0; }
+      .masthead .intro { padding: 0; font-size: 15px; }
+      .waterfall img, .waterfall .waterfall-fallback { height: 112px; }
+      .waterfall { margin-bottom: 16px; }
+      .section-title h2 { font-size: 23px; }
+      .paper h3 { font-size: 16px; }
+      .description { padding: 10px 12px; }
+    }
+    @media (max-width: 380px) {
+      .masthead { grid-template-columns: minmax(0,1fr) 110px; gap: 15px; }
+      .portrait { width: 110px; height: 151px; }
+      h1 { font-size: 27px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav aria-label="Main navigation">
+      <a href="#research">Research</a>
+      <a href="#talks">Talks</a>
+      <a href="#teaching">Teaching</a>
+    </nav>
 
-<br><br><br>
 
-</body></html>
+    <header class="masthead">
+      <div class="headline">
+        <h1>Kimoi Kemboi</h1>
+        <p class="affiliation">Instructor in Mathematics<br>Princeton University</p>
+        <p class="contact"><span><strong>Email:</strong> firstname at princeton dot edu</span><span><strong>Office:</strong> Fine Hall 1107</span></p>
+      </div>
+      <div class="intro">
+        <p>My research is in algebraic geometry, particularly derived categories and their connections to birational geometry.</p>
+        <p>Previously, I was a postdoctoral fellow at SLMath (Spring 2024) and a member of the Institute for Advanced Study (Fall 2023). Before that, I was a graduate student at Cornell University, advised by <a href="https://danielhl.github.io">D. Halpern-Leistner</a>.</p>
+        <p>I am coorganizing the <a href="https://www.math.princeton.edu/events/seminars/algebraic-geometry-seminar">Princeton Algebraic Geometry Seminar</a>.</p>
+      </div>
+      <figure class="picture portrait">
+        <img src="https://kimoitoek.github.io/Kemboi_head_Shot.jpg" alt="Portrait of Kimoi Kemboi" onerror="this.parentElement.classList.add('photo-unavailable')">
+        <span class="fallback" aria-hidden="true">Existing portrait</span>
+      </figure>
+    </header>
 
+    <main>
+      <section id="research" aria-labelledby="research-heading">
+        <div class="section-title"><h2 id="research-heading">Research</h2></div>
+        <div class="section-heading-row">
+          <p class="section-label">Publications and preprints</p>
+          <button class="all-toggle" id="toggle-all" type="button">Collapse all</button>
+        </div>
+
+        <article class="paper">
+          <h3><a href="https://arxiv.org/abs/2511.05381">A looming of phantoms</a></h3>
+          <p class="byline">With D. Krashen, T. Liu, Y. Liu, E. Mackall, S. Makarova, A. Perry, A.-A. Robotis, and S. Venkatesh.</p>
+          <p class="journal"><cite>Advances in Mathematics</cite> <strong>499</strong> (2026), article 111046.</p>
+          <div class="paper-links">
+            <a href="https://arxiv.org/abs/2511.05381">arXiv ↗</a>
+            <a href="https://doi.org/10.1016/j.aim.2026.111046">Journal ↗</a>
+          </div>
+          <details class="paper-details" open>
+            <summary title="Expand or collapse description"><span class="sr-only">Expand or collapse paper description</span><span class="chevron" aria-hidden="true"></span></summary>
+            <div class="description"><p>We construct new examples of phantom categories in the derived categories of two kinds of rational surfaces: the blowup of the plane at 11 points in general position, and the blowup of the second Hirzebruch surface at nine points in general position. We also propose conjectures for blowups of other Hirzebruch surfaces.</p></div>
+          </details>
+        </article>
+
+        <article class="paper">
+          <h3><a href="https://arxiv.org/abs/2506.20559">The Fano of lines, the Kuznetsov component, and a flop</a></h3>
+          <p class="byline">With E. Segal.</p>
+          <p class="journal">Preprint (2025).</p>
+          <div class="paper-links"><a href="https://arxiv.org/abs/2506.20559">arXiv ↗</a></div>
+          <details class="paper-details" open>
+            <summary title="Expand or collapse description"><span class="sr-only">Expand or collapse paper description</span><span class="chevron" aria-hidden="true"></span></summary>
+            <div class="description"><p>We prove Galkin's conjecture for cubic fourfolds: the symmetric square of the Kuznetsov component is equivalent to the derived category of the Fano variety of lines. A key ingredient is a derived equivalence for a 12-dimensional flop.</p></div>
+          </details>
+        </article>
+
+        <article class="paper">
+          <h3><a href="https://arxiv.org/abs/2405.01683">Non-existence of phantoms on some non-generic blowups of the projective plane</a></h3>
+          <p class="byline">With L. Borisov.</p>
+          <p class="journal"><cite>Proceedings of the American Mathematical Society</cite> <strong>153</strong> (2025), no. 3, 963–968.</p>
+          <div class="paper-links">
+            <a href="https://arxiv.org/abs/2405.01683">arXiv ↗</a>
+            <a href="https://doi.org/10.1090/proc/17105">Journal ↗</a>
+          </div>
+          <details class="paper-details" open>
+            <summary title="Expand or collapse description"><span class="sr-only">Expand or collapse paper description</span><span class="chevron" aria-hidden="true"></span></summary>
+            <div class="description"><p>We show that the derived category of the blowup of the projective plane at points in very general position on a smooth cubic curve contains no phantom subcategories. We also propose a conjectural obstruction to phantoms on surfaces.</p></div>
+          </details>
+        </article>
+
+        <article class="paper">
+          <h3><a href="https://arxiv.org/abs/2202.12876">Full exceptional collections of vector bundles on rank-two linear GIT quotients</a></h3>
+          <p class="byline">With D. Halpern-Leistner.</p>
+          <p class="journal"><cite>Advances in Mathematics</cite> <strong>482</strong> (2025), article 110638.</p>
+          <div class="paper-links">
+            <a href="https://arxiv.org/abs/2202.12876">arXiv ↗</a>
+            <a href="https://doi.org/10.1016/j.aim.2025.110638">Journal ↗</a>
+          </div>
+          <details class="paper-details" open>
+            <summary title="Expand or collapse description"><span class="sr-only">Expand or collapse paper description</span><span class="chevron" aria-hidden="true"></span></summary>
+            <div class="description"><p>Using window categories, we construct full strong exceptional collections of vector bundles on certain linear GIT quotients by reductive groups of rank two. We also obtain further examples among decorated quiver varieties.</p></div>
+          </details>
+        </article>
+
+        <div class="other-writing">
+          <h3 class="subheading">Other writing</h3>
+          <p><a href="https://publications.mfo.de/handle/mfo/4451">Hyperkähler fourfolds and categorical Hilbert squares</a> — <cite>Oberwolfach Reports</cite>, preliminary report 29/2026.</p>
+        </div>
+      </section>
+
+      <section id="talks" aria-labelledby="talks-heading">
+        <div class="section-title"><h2 id="talks-heading">Talks and expository material</h2></div>
+
+        <details class="talk-entry">
+          <summary>Galkin's conjecture for cubic fourfolds <span class="chevron" aria-hidden="true"></span></summary>
+          <div class="talk-body"><ul>
+            <li>The Fano of lines and the Kuznetsov component of cubic fourfolds, Birational Geometry Seminar, February 2026 (<a href="https://vimeo.com/1167819093">video</a>).</li>
+          </ul></div>
+        </details>
+        <details class="talk-entry">
+          <summary>Full exceptional collections and window categories <span class="chevron" aria-hidden="true"></span></summary>
+          <div class="talk-body"><ul>
+            <li>Workshop in Noncommutative Algebraic Geometry, SLMath, Spring 2024 (<a href="https://player.vimeo.com/video/910966571">video</a>).</li>
+            <li>IAS postdoc short talk (<a href="https://www.youtube.com/watch?v=6Guw3_wr3zo">video</a>).</li>
+            <li>Fields Medal Symposium, Fields Institute (<a href="https://www.youtube.com/watch?v=O4HJkU-MgtI">video</a>).</li>
+            <li>Derived Categories and Moduli Spaces FRG workshop, Cornell University (<a href="https://kimoitoek.github.io/(FRG%20slides)%20Full%20exceptional%20collections%20on%20rank%202%20Linear%20GIT%20quotients%202.pdf">notes</a>, <a href="https://sites.google.com/view/derivedfrg/events/cornell-2022">video</a>).</li>
+          </ul></div>
+        </details>
+        <details class="talk-entry">
+          <summary>Semiorthogonal decompositions and geometry <span class="chevron" aria-hidden="true"></span></summary>
+          <div class="talk-body"><ul>
+            <li>A short talk for a general audience, SLMath, Spring 2024 (<a href="https://kimoitoek.github.io/Kemboi_Sponsors_Day_Talk.pdf">slides</a>).</li>
+          </ul></div>
+        </details>
+      </section>
+
+      <section id="teaching" aria-labelledby="teaching-heading">
+        <div class="section-title"><h2 id="teaching-heading">Teaching</h2></div>
+
+        <p class="teaching-current">Current: <strong>MAT202 — Linear Algebra with Applications</strong></p>
+        <div class="course-notes">
+          <h3 class="subheading">Course notes</h3>
+          <p>Category theory and homological algebra (<a href="MATH6350_Homological_Algebra.pdf">PDF</a>).</p>
+        </div>
+      </section>
+    </main>
+
+    <figure class="waterfall">
+      <img src="https://kimoitoek.github.io/falls.jpg" alt="Waterfall in Ithaca, New York" loading="lazy" onerror="this.parentElement.classList.add('photo-unavailable')">
+      <div class="waterfall-fallback" aria-hidden="true">Waterfall photograph from Ithaca</div>
+      <figcaption>Ithaca, NY</figcaption>
+    </figure>
+  </div>
+  <script>
+    // Native details elements handle the paper and talk chevron toggles.
+    const descriptions = Array.from(document.querySelectorAll('.paper-details'));
+    const toggleAll = document.getElementById('toggle-all');
+    const updateToggleLabel = () => {
+      const allOpen = descriptions.every((description) => description.open);
+      toggleAll.textContent = allOpen ? 'Collapse all' : 'Expand all';
+    };
+    toggleAll.addEventListener('click', () => {
+      const shouldOpen = !descriptions.every((description) => description.open);
+      descriptions.forEach((description) => { description.open = shouldOpen; });
+      updateToggleLabel();
+    });
+    descriptions.forEach((description) => description.addEventListener('toggle', updateToggleLabel));
+    updateToggleLabel();
+  </script>
+</body>
+</html>
